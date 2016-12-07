@@ -259,20 +259,20 @@ public class RoadNetwork{
     Table hello = loadTable("data/POIs.csv", "header");
     Table thing = loadTable("data/roads.csv", "header");
     Table nodes = loadTable("Simnodes.csv", "header");
-    Table stuffs = loadTable("roadsOpening.csv", "header");
+//    Table stuffs = loadTable("roadsOpening.csv", "header");
     
-    for(int i = 0; i<stuffs.getRowCount(); i++){
-      int starter = stuffs.getInt(i, "start");
-      int ender = stuffs.getInt(i, "end");
-      TableRow startrow = nodes.getRow(starter-1);
-      TableRow endrow = nodes.getRow(ender-1);
-      PVector starts = new PVector(startrow.getFloat("lat"), startrow.getFloat("lon"));
-      PVector ends = new PVector(endrow.getFloat("lat"), endrow.getFloat("lon"));
-      float len = abs(mercatorMap.Haversine(starts, ends));
-      stuffs.setFloat(i, "length", len);
-      stuffs.setFloat(i, "capacity", int(len/7.5));
-    }
-    saveTable(stuffs, "roadplzplz.csv");
+//    for(int i = 0; i<stuffs.getRowCount(); i++){
+//      int starter = stuffs.getInt(i, "start");
+//      int ender = stuffs.getInt(i, "end");
+//      TableRow startrow = nodes.getRow(starter-1);
+//      TableRow endrow = nodes.getRow(ender-1);
+//      PVector starts = new PVector(startrow.getFloat("lat"), startrow.getFloat("lon"));
+//      PVector ends = new PVector(endrow.getFloat("lat"), endrow.getFloat("lon"));
+//      float len = abs(mercatorMap.Haversine(starts, ends));
+//      stuffs.setFloat(i, "length", len);
+//      stuffs.setFloat(i, "capacity", int(len/7.5));
+//    }
+//    saveTable(stuffs, "roadplzplz.csv");
     
     for(int i = 0; i<nodes.getRowCount(); i++){
       PVector dot = mercatorMap.getScreenLocation(new PVector(nodes.getFloat(i, "lat"), nodes.getFloat(i, "lon")));
