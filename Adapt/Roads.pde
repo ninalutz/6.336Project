@@ -259,20 +259,20 @@ public class RoadNetwork{
     Table hello = loadTable("data/POIs.csv", "header");
     Table thing = loadTable("data/roads.csv", "header");
     Table nodes = loadTable("Simnodes.csv", "header");
-//    Table stuffs = loadTable("roadsOpening.csv", "header");
+   Table stuffs = loadTable("roadsHalf.csv", "header");
     
-//    for(int i = 0; i<stuffs.getRowCount(); i++){
-//      int starter = stuffs.getInt(i, "start");
-//      int ender = stuffs.getInt(i, "end");
-//      TableRow startrow = nodes.getRow(starter-1);
-//      TableRow endrow = nodes.getRow(ender-1);
-//      PVector starts = new PVector(startrow.getFloat("lat"), startrow.getFloat("lon"));
-//      PVector ends = new PVector(endrow.getFloat("lat"), endrow.getFloat("lon"));
-//      float len = abs(mercatorMap.Haversine(starts, ends));
-//      stuffs.setFloat(i, "length", len);
-//      stuffs.setFloat(i, "capacity", int(len/7.5));
-//    }
-//    saveTable(stuffs, "roadplzplz.csv");
+    for(int i = 0; i<stuffs.getRowCount(); i++){
+      int starter = stuffs.getInt(i, "start");
+      int ender = stuffs.getInt(i, "end");
+      TableRow startrow = nodes.getRow(starter-1);
+      TableRow endrow = nodes.getRow(ender-1);
+      PVector starts = new PVector(startrow.getFloat("lat"), startrow.getFloat("lon"));
+      PVector ends = new PVector(endrow.getFloat("lat"), endrow.getFloat("lon"));
+      float len = abs(mercatorMap.Haversine(starts, ends));
+      stuffs.setFloat(i, "length", len);
+      stuffs.setFloat(i, "capacity", int(len/7.5));
+    }
+    saveTable(stuffs, "roadshalf2.csv");
     
     for(int i = 0; i<nodes.getRowCount(); i++){
       PVector dot = mercatorMap.getScreenLocation(new PVector(nodes.getFloat(i, "lat"), nodes.getFloat(i, "lon")));
@@ -289,7 +289,7 @@ public class RoadNetwork{
         PVector dot = mercatorMap.getScreenLocation(new PVector(hello.getFloat(i, "lat"), hello.getFloat(i, "lon")));
         
         p.fill(#0000ff);
-        p.text(hello.getInt(i, "id"), dot.x + 5, dot.y);
+        //p.text(hello.getInt(i, "id"), dot.x + 5, dot.y);
          p.fill(#00ff00);
        p.ellipse(dot.x, dot.y, 10, 10);
     }
