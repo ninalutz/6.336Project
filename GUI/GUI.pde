@@ -9,8 +9,8 @@ void setup(){
   initSliders();
 
   //map = new UnfoldingMap(this, new OpenStreetMap.OpenStreetMapProvider());
-  //map = new UnfoldingMap(this, new StamenMapProvider.TonerBackground());
- map = new UnfoldingMap(this, new StamenMapProvider.WaterColor());
+  map = new UnfoldingMap(this, new StamenMapProvider.TonerBackground());
+ //map = new UnfoldingMap(this, new StamenMapProvider.WaterColor());
   //map = new UnfoldingMap(this, new Microsoft.RoadProvider());
 // map = new UnfoldingMap(this, new Microsoft.HybridProvider());
     Location Boston = new Location(42.359676, -71.060636);
