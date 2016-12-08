@@ -276,21 +276,32 @@ public class RoadNetwork{
     
     for(int i = 0; i<nodes.getRowCount(); i++){
       PVector dot = mercatorMap.getScreenLocation(new PVector(nodes.getFloat(i, "lat"), nodes.getFloat(i, "lon")));
-      p.fill(255);
+      p.fill(0);
       p.ellipse(dot.x, dot.y, 10, 10);
       p.fill(0);
      
       p.text(nodes.getInt(i, "id"), dot.x, dot.y-10);
-      p.textSize(14);
+      
+             p.textSize(14);
        p.fill(0);
+    }
+    
+    for(int i = 0; i<CoordsCensus.size(); i++){
+      PVector dot = mercatorMap.getScreenLocation(CoordsCensus.get(i));
+      p.fill(255);
+      p.ellipse(dot.x, dot.y, 10, 10);
+    
     }
     
     for(int i = 0; i<hello.getRowCount(); i++){
         PVector dot = mercatorMap.getScreenLocation(new PVector(hello.getFloat(i, "lat"), hello.getFloat(i, "lon")));
         
         p.fill(#0000ff);
-        //p.text(hello.getInt(i, "id"), dot.x + 5, dot.y);
+        p.text(hello.getInt(i, "id"), dot.x + 5, dot.y);
          p.fill(#00ff00);
+         
+      p.textSize(14);
+         
        p.ellipse(dot.x, dot.y, 10, 10);
     }
     
@@ -345,7 +356,7 @@ public class RoadNetwork{
             //p.ellipse(start.x, start.y, 5, 5);
             p.fill(0);
             //p.ellipse(end.x, end.y, 5, 5);
-            //p.text(Roads.get(i).OSMid, start.x + 5, start.y);
+            p.text(Roads.get(i).OSMid, start.x + 5, start.y);
             p.fill(0);
             //p.text(i+1, end.x + 5, end.y+10 );
             p.fill(#ff0000);

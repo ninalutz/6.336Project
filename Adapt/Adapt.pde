@@ -59,8 +59,8 @@ void draw() {
     //Sets up Bounding Boxes for current model's map
       MapArch();
       
-      PullCensus();
-      createGrid();
+      //PullCensus();
+      //createGrid();
       
     
     //Use HTTP requests to get data    
@@ -143,6 +143,10 @@ void draw() {
   if(initialized && pullprojection){
   things = get(int(mercatorMap.getScreenLocation(selection.bounds.boxcorners().get(1)).x), int(mercatorMap.getScreenLocation(selection.bounds.boxcorners().get(1)).y), boxh, boxw+90);
   }
+  
+  //PVector thing = mercatorMap.getGeo(new PVector(mouseX, mouseY));
+  //println(thing);
+  
 }
 
 void mouseDragged() {

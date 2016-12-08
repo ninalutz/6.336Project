@@ -1,18 +1,18 @@
 name,lat,lon,open,close,income,id
-Cambridge Fire Department,42.371178,-71.07878,9,5,2,10
+Cambridge Fire Department,42.371178,-71.07878,9,5,2,10000000
 Olive Cafe,42.3718,-71.079506,11,9,1,17
 Middlesex County Sheriff,42.369408,-71.0795,9,5,2,43
 Middlesex Law Library,42.36948,-71.0794,9,5,1,43
 Arteaus Therapeutics,42.369457,-71.07753,9,5,1,44
-Taco Bell,42.367622,-71.07621,10,9,1,62
-CVS,42.367733,-71.07618,9,9,1,62
+Taco Bell,42.367622,-71.07621,10,9,1,57
+CVS,42.367733,-71.07618,9,9,1,57
 "Foundation Medicine, Inc. Headquarters",42.36721,-71.079216,9,5,3,70
-Cheescake Factory,42.367172,-71.076256,10,11,1,71
+Cheescake Factory,42.367172,-71.076256,10,11,1,66
 Moderna Pharmaceuticals,42.367493,-71.087395,9,5,3,72
 "Idenix Pharmaceuticals, Inc.",42.367542,-71.087585,9,5,3,72
-Intrepid Labs,42.36622,-71.07759,9,5,3,79
-Boca Grande,42.366276,-71.07807,11,7,1,79
-The Similans,42.36636,-71.07806,11,10,1,79
+Intrepid Labs,42.36622,-71.07759,9,5,3,74
+Boca Grande,42.366276,-71.07807,11,7,1,74
+The Similans,42.36636,-71.07806,11,10,1,74
 Bayer Diagnostics,42.36617,-71.08143,9,5,3,84
 Alnylam Pharmaceuticals,42.365257,-71.08195,9,5,3,123
 Eastern Bank,42.362617,-71.083885,9,5,2,105
@@ -101,6 +101,3 @@ Au Bon Pain,42.36132,-71.0667,7,9,1,268
 West End House,42.36169,-71.06718,9,9,2,270
 Pro Optical,42.36136,-71.065956,9,6,3,273
 Bank of America,42.3614,-71.06543,9,5,2,273
-,,,,,,
-,,,,,,
-,,,,,,
