@@ -153,6 +153,9 @@ public class RoadNetwork{
                   String type = JSON.getJSONArray("features").getJSONObject(i).getJSONObject("geometry").getString("type");
                   int OSMid = JSON.getJSONArray("features").getJSONObject(i).getJSONObject("properties").getInt("id");
                   String kind = JSON.getJSONArray("features").getJSONObject(i).getJSONObject("properties").getString("kind");
+                  
+                  //String highway = JSON.getJSONArray("features").getJSONObject(i).getJSONObject("properties").getString("highway");
+                  //println(highway);
                 if(type.equals("LineString")){
                  JSONArray linestring = JSON.getJSONArray("features").getJSONObject(i).getJSONObject("geometry").getJSONArray("coordinates");
                    for(int j = 0; j<linestring.size(); j++){
@@ -165,6 +168,9 @@ public class RoadNetwork{
                             if(int(len/7.5) == 0){
                               len = 7.5;
                                }
+//                        if(highway.equals("motorway") || highway.equals("trunk") || highway.equals("primary")){
+//                            println("YAY FOR FAST THINGS");
+//                        }
                         Road road = new Road(start, end, OSMid, 45, len, int(len/7.5), 0, 0);
                         a+=1;
 //                        if(start.x > 42.36596 && start.x < 42.372135 && start.y < -71.06496 && start.y > -71.07805
@@ -258,8 +264,8 @@ public class RoadNetwork{
   void drawRoads(PGraphics p, color c){
     Table hello = loadTable("data/POIs.csv", "header");
     Table thing = loadTable("data/roads.csv", "header");
-    Table nodes = loadTable("Simnodes.csv", "header");
-   Table stuffs = loadTable("roadsHalf.csv", "header");
+    Table nodes = loadTable("SimnodesClose.csv", "header");
+   Table stuffs = loadTable("ClosingRoads.csv", "header");
     
     for(int i = 0; i<stuffs.getRowCount(); i++){
       int starter = stuffs.getInt(i, "start");
@@ -272,7 +278,7 @@ public class RoadNetwork{
       stuffs.setFloat(i, "length", len);
       stuffs.setFloat(i, "capacity", int(len/7.5));
     }
-    saveTable(stuffs, "roadshalf2.csv");
+    saveTable(stuffs, "ClosingRoadsNew.csv");
     
     for(int i = 0; i<nodes.getRowCount(); i++){
       PVector dot = mercatorMap.getScreenLocation(new PVector(nodes.getFloat(i, "lat"), nodes.getFloat(i, "lon")));
