@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<osm version="0.6" generator="CGImap 0.5.8 (12087 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+<osm version="0.6" generator="CGImap 0.5.8 (26874 thorn-03.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
  <bounds minlat="42.3581470" minlon="-71.0679600" maxlat="42.3627240" maxlon="-71.0623300"/>
  <node id="61339720" visible="true" version="5" changeset="9984050" timestamp="2011-11-29T02:06:05Z" user="wambag" uid="326503" lat="42.3634227" lon="-71.0669147"/>
  <node id="61339977" visible="true" version="1" changeset="64956" timestamp="2007-10-09T00:41:47Z" user="MassGIS Import" uid="15750" lat="42.3624700" lon="-71.0617440">
