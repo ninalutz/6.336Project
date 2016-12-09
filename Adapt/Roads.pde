@@ -264,8 +264,8 @@ public class RoadNetwork{
   void drawRoads(PGraphics p, color c){
     Table hello = loadTable("data/POIs.csv", "header");
     Table thing = loadTable("data/roads.csv", "header");
-    Table nodes = loadTable("SimnodesClose.csv", "header");
-   Table stuffs = loadTable("ClosingRoads.csv", "header");
+    Table nodes = loadTable("Simnodes_working_final.csv", "header");
+   Table stuffs = loadTable("OpeningRoads_Working_Final.csv", "header");
     
     for(int i = 0; i<stuffs.getRowCount(); i++){
       int starter = stuffs.getInt(i, "start");
@@ -278,7 +278,7 @@ public class RoadNetwork{
       stuffs.setFloat(i, "length", len);
       stuffs.setFloat(i, "capacity", int(len/7.5));
     }
-    saveTable(stuffs, "ClosingRoadsNew.csv");
+    //saveTable(stuffs, "OpeningRoads_Working_Final.csv");
     
     for(int i = 0; i<nodes.getRowCount(); i++){
       PVector dot = mercatorMap.getScreenLocation(new PVector(nodes.getFloat(i, "lat"), nodes.getFloat(i, "lon")));
@@ -286,6 +286,13 @@ public class RoadNetwork{
       p.ellipse(dot.x, dot.y, 10, 10);
       p.fill(0);
      
+     if(nodes.getInt(i, "id") == 260){
+       p.textSize(20);
+     }
+     
+     else{
+       p.textSize(14);
+     }
       p.text(nodes.getInt(i, "id"), dot.x, dot.y-10);
       
              p.textSize(14);

@@ -10,16 +10,18 @@ C9 = loadTable("data/C9pm.csv", "header");
 C10 = loadTable("data/C10pm.csv", "header");
 C11 = loadTable("data/C11pm.csv", "header");
 
-
+O11.addColumn("amount");
 for(int i = 0; i<POIs.getRowCount(); i++){
-    for(int j = 0; j<O7.getRowCount(); j++){
+    for(int j = 0; j<O11.getRowCount(); j++){
       int id = POIs.getInt(i, "id");
+      int amount = POIs.getInt(i, "carpool");
       String nameP = POIs.getString(i, "name");
-      String nameC = O7.getString(j, "name");
+      String nameC = O11.getString(j, "name");
       
       if(nameP.equals(nameC)){
-        O7.setInt(j, "id", id);
-        saveTable(O7, "O7.csv");
+        O11.setInt(j, "amount", amount);
+        O11.setInt(j, "id", id);
+        saveTable(O11, "O11carpool.csv");
       }
     
     }
