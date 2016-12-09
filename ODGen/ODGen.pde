@@ -1,6 +1,6 @@
 void setup(){
   
-  numbers(26, 5155);
+  numbers(26, 1338);
 }
 
 void draw(){}
