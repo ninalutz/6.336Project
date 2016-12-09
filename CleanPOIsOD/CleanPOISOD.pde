@@ -10,22 +10,20 @@ C9 = loadTable("data/C9pm.csv", "header");
 C10 = loadTable("data/C10pm.csv", "header");
 C11 = loadTable("data/C11pm.csv", "header");
 
-O11.addColumn("amount");
+C11.addColumn("amount");
 for(int i = 0; i<POIs.getRowCount(); i++){
-    for(int j = 0; j<O11.getRowCount(); j++){
+    for(int j = 0; j<C11.getRowCount(); j++){
       int id = POIs.getInt(i, "id");
-      int amount = POIs.getInt(i, "carpool");
+      int amount = POIs.getInt(i, "noncarpool");
       String nameP = POIs.getString(i, "name");
-      String nameC = O11.getString(j, "name");
+      String nameC = C11.getString(j, "name");
       
       if(nameP.equals(nameC)){
-        O11.setInt(j, "amount", amount);
-        O11.setInt(j, "id", id);
-        saveTable(O11, "O11carpool.csv");
+        C11.setInt(j, "amount", amount);
+        C11.setInt(j, "id", id);
+        saveTable(C11, "C11noncarpool.csv");
       }
-    
     }
-
 }
 
 }
