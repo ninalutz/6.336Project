@@ -222,9 +222,19 @@ public class MercatorMap {
     
     return new PVector(xNew, yNew);
   }
-  
-//  private float getLatitudeRelative(float screenY) {
-//    return (bottomLatitudeRelative - topLatitudeRelative) * screenY / lg_height;
-//  }
+
 }
+
+public ArrayList<PVector> CanvasBox() {
+      ArrayList<PVector> canvas = new ArrayList<PVector>();
+         float a = 0;
+         float b = 0;
+         float c = width;
+         float d = height;
+         PVector topleft = map.getLocation(a, b);
+         PVector bottomright = map.getLocation(c, d);
+         canvas.add(topleft);
+         canvas.add(bottomright);
+      return canvas;
+};
 
