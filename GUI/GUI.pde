@@ -107,8 +107,10 @@ stroke(background);
 //rect(0, 0, 100, height);
 rect(0, 0, width, 90);
 
+fill(medblue);
+text("Income 1", offset+50, 30);
+
 fill(accentwhite);
-text("k = " + int(cp5.getController("k").getValue()), 260 + offset, 37);
 text("t = " + int(cp5.getController("t").getValue()), 260 + offset, 67);
 
 if(AutoPlay.on){

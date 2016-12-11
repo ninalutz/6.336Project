@@ -11,12 +11,11 @@ void initButtons(){
 
      Interactive.make( this );
      
-     Income1 = new SimpleButton(300 + offset1, 15, 85, 25, "Carpool", carpool);
       AM = new SimpleButton(300 + offset1, 47, 35, 25, "AM", am);
   PM = new SimpleButton(350 + offset1, 47, 35, 25, "PM", pm);
-//  Income1 = new SimpleButton(450 + offset1, 15, 125, 25, "Income <25k", income1);
-//  Income2 = new SimpleButton(590 + offset1, 15, 125, 25, "Income <75k", income2);
-//  Income3 = new SimpleButton(730 + offset1, 15, 125, 25, "Income >75k", income3);
+  Income1 = new SimpleButton(450 + offset1, 15, 125, 25, "Show Cars", cars);
+  Income2 = new SimpleButton(590 + offset1, 15, 125, 25, "Carpool", carpool);
+  Income3 = new SimpleButton(730 + offset1, 15, 125, 25, "Show Graphs", income3);
   Congestion = new SimpleButton(590 + offset1, 47, 125, 25, "Congestion", congestion);
   SteadyState = new SimpleButton(730 + offset1, 47, 125, 25, "Show OD", steadystate);
   AutoPlay = new SimpleButton(450 + offset1, 47, 125, 25, "Play/Pause", autoplay);
@@ -25,22 +24,6 @@ void initButtons(){
 
 void initSliders(){
   textSize(20);
-    cp5.addSlider("k")
-     .setPosition(30 + offset,20)
-     .setSize(200,20)
-     .setValue(1)
-     .setColorBackground(0) 
-     .setColorActive(accentred)
-     .setColorLabel(background)
-     .setColorValue(background)
-     .setColorValueLabel(background)
-     .setRange(0,4)
-     .setDecimalPrecision(0)
-     .setNumberOfTickMarks(5)
-     .snapToTickMarks(true)
-     .showTickMarks(false) 
-
-     ;
     
     if(AM.on == true){
     cp5.addSlider("t")
@@ -80,7 +63,6 @@ void initSliders(){
    
      
  cp5.getController("t").getValueLabel().align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
-  cp5.getController("k").getValueLabel().align(ControlP5.RIGHT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
  
 }
 

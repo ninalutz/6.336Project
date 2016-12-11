@@ -32,10 +32,10 @@ for row=1:N
     baseline = Txy0(i,j);
     threshold = warningScaleFactor*baseline;
     if(Txy7am(i,j) >= threshold)
-        flagMatrix7am(i, j) = 255;
+        flagMatrix7am(i, j) = 1;
     end
     if(Txy7amPool(i,j) >= threshold)
-        flagMatrix7amCarpool(i,j) = 255;
+        flagMatrix7amCarpool(i,j) = 1;
     end
     if(Txy9am(i,j) >= threshold)
         flagMatrix9am(i, j) = 1;
@@ -44,10 +44,10 @@ for row=1:N
         flagMatrix9amCarpool(i,j) = 1;
     end
     if(Txy11am(i,j) >= threshold)
-        flagMatrix11am(i, j) = 255;
+        flagMatrix11am(i, j) = 1;
     end
     if(Txy11amPool(i,j) >= threshold)
-        flagMatrix11amCarpool(i,j) = 255;
+        flagMatrix11amCarpool(i,j) = 1;
     end
 end
 figure('Name', '7am image rep, no carpool')
