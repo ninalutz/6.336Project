@@ -2,6 +2,7 @@
         float xDir=.5;
         
         StopWatchTimer sw = new StopWatchTimer();
+                StopWatchTimer sw2 = new StopWatchTimer();
 
 public class Road{
   public String name; 
@@ -53,17 +54,33 @@ public class RoadNetwork{
   public void drawRoads(PGraphics p){
    p.beginDraw();
 
+  if(am){
     for(int i = 0; i<Roads.size(); i++){
           //println(Flows.max());
           PVector startViz = mercatorMap.getScreenLocation(Roads.get(i).start);
           PVector endViz = mercatorMap.getScreenLocation(Roads.get(i).end);
    
           color inter = lerpColor(none, full, abs(Roads.get(i).flow)/Roads.get(i).capacity);
-          p.strokeWeight(5);
+          p.strokeWeight(7);
           p.stroke(inter);
           p.line(startViz.x, startViz.y, endViz.x, endViz.y);
  
     }
+  }
+  
+  if(pm){
+    for(int i = 0; i<Roads.size(); i++){
+          //println(Flows.max());
+          PVector startViz = mercatorMap.getScreenLocation(Roads.get(i).start);
+          PVector endViz = mercatorMap.getScreenLocation(Roads.get(i).end);
+   
+          color inter = lerpColor(none, full, abs(Roads.get(i).flow)/Roads.get(i).capacity);
+          p.strokeWeight(7);
+          p.stroke(inter);
+          p.line(startViz.x, startViz.y, endViz.x, endViz.y);
+ 
+    }
+  }
     
              p.endDraw();
              p.clear();
@@ -89,13 +106,13 @@ public class RoadNetwork{
                     PVector intermed2 = mercatorMap.getScreenLocation(intermed);
                     PVector thing2 = mercatorMap.getScreenLocation(thing);
    println(sw.getElapsedTime());
-                 if(sw.getElapsedTime() % 900 == 0){
+                 if(sw.getElapsedTime() > 900){
                    xPos = 0;
                    sw.start();
                  }
 
                     p.noStroke();
-                    p.fill(lightblue);
+                    p.fill(color(255, 238, 0));
                     p.ellipse(thing2.x, thing2.y, 7, 7);
                 }
           }
@@ -116,14 +133,14 @@ public class RoadNetwork{
 //                       xPos = 0;
 //                     }
 
-                 if(sw.getElapsedTime() % 900 == 0){
+                 if(sw.getElapsedTime() > 900){
                    xPos = 0;
                    sw.start();
                  }
 
                      
                     p.noStroke();
-                    p.fill(lightblue);
+                    p.fill(color(255, 238, 0));
                     
 //                    println(thing2, mercatorMap.getScreenLocation(Roads.get(i).end));
                     p.ellipse(thing2.x, thing2.y, 7, 7);
@@ -135,7 +152,7 @@ public class RoadNetwork{
   }
   
   public void drawPMCars(){
-//      Table PM = loadTable();
+      Table PM = loadTable("Closing.csv", "header");
   
   }
 

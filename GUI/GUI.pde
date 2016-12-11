@@ -46,6 +46,9 @@ void setup(){
 
 
 void draw(){
+  
+  am = AM.on;
+  pm = PM.on;
  
 //  println(edges);
 

@@ -46,7 +46,7 @@ void initSliders(){
     cp5.addSlider("t")
      .setPosition(30 + offset,50)
      .setSize(200,20)
-     .setValue(7)
+     .setValue(9)
      .setColorBackground(0) 
      .setColorActive(accentred)
      .setColorLabel(background)

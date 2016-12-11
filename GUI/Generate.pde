@@ -7,6 +7,10 @@ ArrayList<Edge> french = new ArrayList<Edge>();
 ArrayList<Edge> spanish = new ArrayList<Edge>();
 ArrayList<Edge> other = new ArrayList<Edge>();
 
+void generateClosingRoads(){
+  
+}
+
 void generateOpeningRoads(){
   stuff = new Places(1);
   non7 = new RoadNetwork("7amnocarpool", 7, true, false);

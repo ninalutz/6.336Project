@@ -1,8 +1,10 @@
 boolean edges, lines, showFrameRate;
+
 void keyPressed(){
 switch(key){
  
   case 'a': 
+    sw2.start();
     lines = !lines;
     Test.clear();
     PLACES.clear();

@@ -32,6 +32,7 @@ public class Edge {
     
     //draw lines
     public void pauseEdge(){
+      noStroke();
       PVector origin = mercatorMap.getScreenLocation(orig);
       PVector destination = mercatorMap.getScreenLocation(dest);
       //println(origin, destination);
@@ -55,6 +56,7 @@ public class Edge {
       }
         
     public void drawEdge(){
+      noStroke();
       //println("drwaing thing");
       fill(incomecolor, 150);
         PVector origin = mercatorMap.getScreenLocation(orig);

@@ -58,13 +58,13 @@ Places(int _id){
       int total = places.get(i).total;
       if(total > 0){
       if(places.get(i).income == 1){
-      p.fill(income1color, 10*(total/5));
+      p.fill(income1color);
       }
       if(places.get(i).income == 2){
-      p.fill(income2color, 10*(total/5));
+      p.fill(income2color);
       }
       if(places.get(i).income == 3){
-      p.fill(income3color, 10*(total/5));
+      p.fill(income3color);
       }
       p.ellipse(loc.x, loc.y, 15, 15);
       }
