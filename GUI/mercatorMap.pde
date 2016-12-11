@@ -168,6 +168,8 @@ public class MercatorMap {
 
     float a = sin(deltaPhi/2) * sin(deltaPhi/2) + cos(phi1) * cos(phi2) * sin(deltaLambda/2) * sin(deltaLambda/2);
     float c = 2 * atan2(sqrt(a), sqrt(1-a));
+    
+    //println(c);
 
     float d = R * c;
     return d;    
@@ -199,6 +201,25 @@ public class MercatorMap {
     
     return new PVector(xNew, yNew);
     
+  }
+  
+  public float bearing(PVector p1, PVector p2){
+    
+     float phi1 = radians(p1.x); // convert to radians
+    float phi2 = radians(p2.x); // convert to radians
+    float lambda1 = radians(p1.y); // convert to radians
+    float lambda2 = radians(p2.y); // convert to radians
+    
+    float y =  sin(lambda2-lambda1)*cos(phi2);
+    float x = cos(phi1)*sin(phi2) - sin(phi1)*cos(phi2)*cos(lambda2-lambda1);
+    
+    float brng = degrees(atan2(y, x));
+    if(brng < 0){
+      return 360+brng;
+    }
+    else{
+      return brng;
+    }
   }
   
   // Find a point a distance (in meters away) in the direction given by the bearing

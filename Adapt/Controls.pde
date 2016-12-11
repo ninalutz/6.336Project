@@ -4,7 +4,7 @@ color c;
 float left;
 
 void keyPressed(){
-switch(key){
+
 //    case '+':
 //       initialized = false;
 //       map.zoomIn();

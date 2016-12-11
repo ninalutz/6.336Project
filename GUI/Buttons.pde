@@ -14,12 +14,12 @@ void initButtons(){
      Income1 = new SimpleButton(300 + offset1, 15, 85, 25, "Carpool", carpool);
       AM = new SimpleButton(300 + offset1, 47, 35, 25, "AM", am);
   PM = new SimpleButton(350 + offset1, 47, 35, 25, "PM", pm);
-  Income1 = new SimpleButton(450 + offset1, 15, 125, 25, "Income <25k", income1);
-  Income2 = new SimpleButton(590 + offset1, 15, 125, 25, "Income <75k", income2);
-  Income3 = new SimpleButton(730 + offset1, 15, 125, 25, "Income >75k", income3);
+//  Income1 = new SimpleButton(450 + offset1, 15, 125, 25, "Income <25k", income1);
+//  Income2 = new SimpleButton(590 + offset1, 15, 125, 25, "Income <75k", income2);
+//  Income3 = new SimpleButton(730 + offset1, 15, 125, 25, "Income >75k", income3);
   Congestion = new SimpleButton(590 + offset1, 47, 125, 25, "Congestion", congestion);
-  SteadyState = new SimpleButton(730 + offset1, 47, 125, 25, "Steady State", steadystate);
-  AutoPlay = new SimpleButton(450 + offset1, 47, 125, 25, "Auto Play", autoplay);
+  SteadyState = new SimpleButton(730 + offset1, 47, 125, 25, "Show OD", steadystate);
+  AutoPlay = new SimpleButton(450 + offset1, 47, 125, 25, "Play/Pause", autoplay);
      AM.on = true;
 }
 
