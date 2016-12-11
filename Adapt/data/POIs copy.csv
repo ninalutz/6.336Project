@@ -1,0 +1,106 @@
+name,lat,lon,open,close,income,id
+Cambridge Fire Department,42.371178,-71.07878,9,5,2,10
+Olive Cafe,42.3718,-71.079506,11,9,1,17
+Middlesex County Sheriff,42.369408,-71.0795,9,5,2,43
+Middlesex Law Library,42.36948,-71.0794,9,5,1,43
+Arteaus Therapeutics,42.369457,-71.07753,9,5,1,44
+Taco Bell,42.367622,-71.07621,10,9,1,62
+CVS,42.367733,-71.07618,9,9,1,62
+"Foundation Medicine, Inc. Headquarters",42.36721,-71.079216,9,5,3,70
+Cheescake Factory,42.367172,-71.076256,10,11,1,71
+Moderna Pharmaceuticals,42.367493,-71.087395,9,5,3,72
+"Idenix Pharmaceuticals, Inc.",42.367542,-71.087585,9,5,3,72
+Intrepid Labs,42.36622,-71.07759,9,5,3,79
+Boca Grande,42.366276,-71.07807,11,7,1,79
+The Similans,42.36636,-71.07806,11,10,1,79
+Bayer Diagnostics,42.36617,-71.08143,9,5,3,84
+Alnylam Pharmaceuticals,42.365257,-71.08195,9,5,3,123
+Eastern Bank,42.362617,-71.083885,9,5,2,105
+Facebook Boston,42.362633,-71.08366,9,5,3,105
+Virtual Knowledge Workers,42.362743,-71.083786,9,5,3,105
+Dunkin' Donuts,42.362434,-71.0832,6,11,1,106
+Firebrand Saints,42.362457,-71.08333,11,1,1,106
+Tatte Bakery and Caf_,42.362206,-71.0813,7,8,1,107
+"Aegerion Pharmaceuticals, Inc.",42.362263,-71.079605,9,5,3,107
+AOBiome,42.362846,-71.08318,9,5,3,109
+"Akrivis Technologies, LLC",42.363,-71.08358,9,5,3,109
+Kika Tapas,42.363403,-71.082985,11,10,1,110
+Evoo Restaurant,42.363422,-71.08316,11,10,1,110
+Za Restaurant,42.363495,-71.083466,11,11,1,110
+Abigail's,42.36461,-71.08317,11,1,1,117
+"Akebia Therapeutics, Inc.",42.363758,-71.07951,9,5,3,120
+"Akashi Therapeutics, Inc.",42.3638,-71.079666,9,5,3,120
+Eleven Biotherapeutics,42.364185,-71.07872,9,5,3,121
+Constellation Pharmaceuticals,42.36434,-71.07875,9,5,3,121
+Starbucks,42.363033,-71.08566,6,10,1,128
+InterSystems Corporation,42.3615,-71.08136,9,5,2,162
+Mead Hall,42.3637,-71.087326,11,1,1,135
+Starbucks,42.363846,-71.08782,9,5,1,135
+Legal Seafoods,42.362705,-71.08784,11,11,1,137
+Sebastian's,42.362785,-71.08841,7,6,1,137
+Microsoft ,42.36253,-71.08491,9,5,3,138
+Chipotle,42.36254,-71.08556,11,10,1,138
+Champion's Sports Bar,42.362755,-71.085594,7,12,1,138
+Clover,42.362602,-71.086624,8,11,1,138
+MIT Coop,42.36268,-71.086395,9,5,1,138
+VMware,42.362724,-71.087234,9,5,3,138
+Google,42.36277,-71.08726,9,5,3,138
+Bailey and Sage,42.36279,-71.086586,7,5,1,138
+Au Bon Pain,42.362175,-71.08506,7,9,1,154
+Bank Of America,42.362103,-71.084366,9,5,2,155
+Information Resource Center,42.362125,-71.084564,9,5,2,155
+Post Office,42.362137,-71.08447,9,5,1,155
+Cambridge Trust Company,42.362316,-71.08685,9,5,3,142
+The Black Sheep,42.362343,-71.08722,7,10,1,142
+MIT Press Bookstore,42.36223,-71.085945,9,7,1,144
+Kendall/MIT,42.362255,-71.08623,9,5,2,144
+MIT Medical,42.36124,-71.08654,9,5,3,145
+Jerusalem Cafe,42.361332,-71.08623,10,10,1,145
+Momogoose,42.36146,-71.086205,9,6,2,145
+Jose's Mexican Food Truck,42.36105,-71.08626,11,12,1,146
+Clover Food Truck,42.36115,-71.08625,7,12,1,146
+Dewey Library,42.361404,-71.08341,9,5,2,159
+Harrison Lyman Library,42.367256,-71.07051,9,5,2,191
+Hotel Marlowe,42.367912,-71.07493,9,5,1,190
+Rowland Research Institute,42.363987,-71.07783,9,5,3,210
+New England Sports Museum,42.367596,-71.07449,9,5,1,208
+Alexion Pharmaceuticals,42.365986,-71.07584,9,5,3,209
+Royal Sonesta Hotel,42.36679,-71.074844,9,5,2,209
+Charles River Park Cleaners,42.364925,-71.06657,9,5,1,215
+Bea's Nails,42.364944,-71.066666,9,6,2,215
+Massachusetts Eye and Ear Infirmary Libraries,42.362633,-71.07033,9,5,2,222
+Palmer-Davis Library,42.36315,-71.069496,9,5,2,222
+Charles MGH,42.361164,-71.070625,9,5,3,223
+Lunder Emergency Room,42.362736,-71.0691,9,5,2,224
+Wang Ambulatory Care Center,42.36258,-71.06825,9,5,2,227
+Treadwell Library,42.36273,-71.06741,9,5,2,228
+Shriners Burn Institute,42.36315,-71.06672,9,5,3,233
+Boston Shriners Hospital,42.36321,-71.06638,9,5,3,233
+Verizon Wireless TCC,42.36099,-71.06862,9,7,2,245
+Fresco Flowers,42.360992,-71.06813,9,7,1,247
+Antonio's Cucina Italiana,42.360992,-71.06821,11,10,1,247
+Felcaros Pizzeria,42.360996,-71.068054,11,11,1,247
+Ma Maison,42.360996,-71.06795,11,10,1,248
+TD Bank,42.36102,-71.06778,9,5,2,248
+Anna's Taqueria,42.360992,-71.067154,7,11,1,249
+Supercuts,42.360992,-71.06729,9,8,2,249
+Fin's,42.36102,-71.06682,11,11,1,249
+Starbucks,42.361027,-71.06649,6,9,1,250
+Simmons Liquor,42.361004,-71.0661,9,11,1,251
+Griddler's Burgers and Dogs,42.36101,-71.06589,10,10,1,251
+American Dry Cleaners,42.361008,-71.06504,7,7,1,253
+Jobi Liquors,42.361008,-71.06499,9,11,1,253
+Cafe Podima,42.361008,-71.06493,11,11,1,253
+Wyndham Boston Beacon Hill,42.36167,-71.06663,9,5,1,254
+CVS,42.36201,-71.06573,9,5,2,254
+Whole Foods,42.362022,-71.06543,7,10,1,254
+Clink,42.361755,-71.07023,7,10,1,263
+Liberty Bar,42.36192,-71.07012,11,2,1,263
+Scampo,42.361935,-71.07046,11,2,1,263
+Au Bon Pain,42.36132,-71.0667,7,9,1,268
+West End House,42.36169,-71.06718,9,9,2,270
+Pro Optical,42.36136,-71.065956,9,6,3,273
+Bank of America,42.3614,-71.06543,9,5,2,273
+,,,,,,
+,,,,,,
+,,,,,,
