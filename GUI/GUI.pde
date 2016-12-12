@@ -39,7 +39,7 @@ void setup(){
   generateOpeningRoads();
   generatePOIs();
   generateODs();
-   initialTime = millis();
+ initialTime = millis();
   
 
 }
@@ -118,14 +118,17 @@ text("Income 3", offset + 265-20, 30);
 fill(accentwhite);
 text("t = " + int(cp5.getController("t").getValue()), 260 + offset, 67);
 
-if(AutoPlay.on){
-textSize(40);
-text(int(cp5.getController("t").getValue()) + ":" + minute() + ":" + second() + timing, 1200, 60);
-}
 
-if(AutoPlay.on == false){
 textSize(40);
 text(int(cp5.getController("t").getValue()) + timing, 1200, 60);
+
+
+if(AutoPlay.on == false){
+  xDir = 0.5;
+}
+
+if(AutoPlay.on == true){
+  xDir = 0;
 }
 
 time = int(cp5.getController("t").getValue());

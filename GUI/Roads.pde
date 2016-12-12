@@ -1,4 +1,7 @@
-         float xPos=0;  
+     
+     
+     
+       float xPos=0;  
         float xDir=.5;
         
         StopWatchTimer sw = new StopWatchTimer();
