@@ -79,19 +79,6 @@ public class RoadNetwork{
   //}   
 
   
-//  if(pm){
-//    for(int i = 0; i<Roads.size(); i++){
-//          //println(Flows.max());
-//          PVector startViz = mercatorMap.getScreenLocation(Roads.get(i).start);
-//          PVector endViz = mercatorMap.getScreenLocation(Roads.get(i).end);
-//   
-//          color inter = lerpColor(none, full, abs(Roads.get(i).flow)/Roads.get(i).capacity);
-//          p.strokeWeight(7);
-//          p.stroke(inter);
-//          p.line(startViz.x, startViz.y, endViz.x, endViz.y);
-// 
-//    }
-//  }
     
        p.endDraw();
        p.clear();
@@ -116,7 +103,7 @@ public class RoadNetwork{
         
                     PVector intermed2 = mercatorMap.getScreenLocation(intermed);
                     PVector thing2 = mercatorMap.getScreenLocation(thing);
-                 println(sw.getElapsedTime());
+                 //println(sw.getElapsedTime());
                  if(sw.getElapsedTime() > 900){
                    xPos = 0;
                    sw.start();
@@ -143,7 +130,6 @@ public class RoadNetwork{
                    sw.start();
                  }
 
-                     
                     p.noStroke();
                     p.fill(color(255, 238, 0));
                     
@@ -156,9 +142,6 @@ public class RoadNetwork{
   p.clear();
   }
   
-  public void drawDynamicCars(){
-    
-      
-  }
+
 
 }

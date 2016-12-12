@@ -3,6 +3,7 @@ Table opening, nodes, POIs, closing, closing2,am9carpool ;
 boolean thing, otherthing, needLoop;
 int time;
 boolean cars;
+int tint = 1;
 
 int hour;
 
@@ -42,6 +43,7 @@ void setup(){
   
   generateOpeningRoads();
   generatePOIs();
+  generateClosingRoads();
   
   //void generateODs(Table OD, int hour, boolean carpooling, boolean am){
     
@@ -78,6 +80,8 @@ void setup(){
   generateODs(pm11non, 11, false, false);
   
  initialTime = millis();
+ 
+ Congestion.on = true;
   
 
 }
@@ -86,9 +90,7 @@ void setup(){
 void draw(){
   
   hour = int(cp5.getController("t").getValue());
-  
 
-  
   //println(hour, AM.on);
   
   am = AM.on;
@@ -105,11 +107,6 @@ void draw(){
 background(background);
 
 map.draw();
-
-
-    stuff.drawNodes(PLACES);
-image(PLACES, 0, 0);
-
 
   //resets initial time apporpriately after one iteration and delay
   if(needLoop){
@@ -225,6 +222,10 @@ if(Congestion.on){
   
   image(Test, 0, 0);
 }
+
+
+    stuff.drawNodes(PLACES);
+image(PLACES, 0, 0);
 
 if(ODButton.on){
   if(AutoPlay.on == false){
@@ -416,10 +417,117 @@ if(ODButton.on){
 }
 
 
-//if(CarButton.on){
-//  non9.drawCars(Cars);
-//  image(Cars, 0, 0);
-//}
+if(Dynamic.on){
+  println("Tint", tint);
+  
+  //if(millis() % 2 == 0){
+    if(tint<9001){
+    tint+=20;
+    }
+    else{
+    tint = 1;
+    }
+    generateClosingRoads();
+   Test.clear();
+  //}
+  
+  
+  Test.clear();
+  if(CarPoolButton.on == false){
+  dynamicthing.drawRoads(Test);
+  }
+  if(CarPoolButton.on){
+  dynamicthingcar.drawRoads(Test);
+  }
+  
+  image(Test, 0, 0);
+  
+}
+
+
+if(showFrameRate){
+  println(frameRate);
+}
+
+
+fill(background);
+stroke(background);
+//rect(0, 0, 100, height);
+rect(0, 0, width, 90);
+
+
+fill(income1color);
+text("Income 1", offset + 65, 30);
+fill(income2color);
+text("Income 2", offset + 180-25, 30);
+fill(income3color);
+text("Income 3", offset + 265-20, 30);
+
+
+fill(accentwhite);
+text("t = " + int(cp5.getController("t").getValue()), 260 + offset, 67);
+
+
+if(Dynamic.on == false){
+textSize(40);
+text(int(cp5.getController("t").getValue()) + timing, 1200, 60);
+}
+if(Dynamic.on){
+  textSize(40);
+  float seconds = tint;
+  
+  if(seconds < 1001){
+      text(4 + "PM", 1200, 60);
+  }
+  
+ if(seconds >= 1001 && seconds < 2001){
+      text(5 +"PM", 1200, 60);
+  }
+  
+   if(seconds >= 2001 && seconds < 3001){
+      text(6 +"PM", 1200, 60);
+  }
+
+   if(seconds >= 3001 && seconds < 4001){
+      text(7 +"PM", 1200, 60);
+  }
+  
+  if(seconds >= 4001 && seconds < 5001){
+      text(8 +"PM", 1200, 60);
+  }
+  
+  if(seconds >= 5001 && seconds < 6001){
+      text(9 +"PM", 1200, 60);
+  }
+  
+  if(seconds >= 6001 && seconds < 7001){
+      text(10 +"PM", 1200, 60);
+  }
+  
+  if(seconds >= 7001 && seconds < 8001){
+      text(11 +"PM", 1200, 60);
+  }
+  
+  if(seconds >= 8001 && seconds < 9001){
+      text(12 +"AM", 1200, 60);
+  }
+  
+   if(seconds >= 9001 && seconds < 10001){
+      text(1 +"AM", 1200, 60);
+  }
+  
+}
+
+
+if(AutoPlay.on == false){
+  xDir = 0.5;
+}
+
+if(AutoPlay.on == true){
+  xDir = 0;
+}
+
+time = int(cp5.getController("t").getValue());
 
 if(CarButton.on){ 
             if(AM.on){
@@ -517,51 +625,15 @@ if(CarButton.on){
                   }
                   Cars.clear();
               }  
-            } 
-  
-  image(Cars, 0, 0);
-}
+            }
+      image(Cars, 0, 0);      
+} 
 
-
-if(showFrameRate){
-  println(frameRate);
-}
-
-
-fill(background);
-stroke(background);
-//rect(0, 0, 100, height);
-rect(0, 0, width, 90);
-
-
-fill(income1color);
-text("Income 1", offset + 65, 30);
-fill(income2color);
-text("Income 2", offset + 180-25, 30);
-fill(income3color);
-text("Income 3", offset + 265-20, 30);
-
-fill(accentwhite);
-text("t = " + int(cp5.getController("t").getValue()), 260 + offset, 67);
-
-
-textSize(40);
-text(int(cp5.getController("t").getValue()) + timing, 1200, 60);
-
-
-if(AutoPlay.on == false){
-  xDir = 0.5;
-}
-
-if(AutoPlay.on == true){
-  xDir = 0;
-}
-
-time = int(cp5.getController("t").getValue());
 
 smooth();
 //  println(Congestion.on);
 //println(frameRate);
+
 
 }
 
@@ -862,21 +934,6 @@ void mouseDragged(){
   rect(0, 0, width, 90);
   }
 }
-  
-//  if(edges){
-//  if(AutoPlay.on == false){
-//  for(int i = 0; i<ODMatrixCar9am.size(); i++){
-//     ODMatrixCar9am.get(i).drawEdge();
-//  }
-//  rect(0, 0, width, 90);
-//  }
-//  
-//  if(AutoPlay.on == true){
-//  for(int i = 0; i<ODMatrixCar9am.size(); i++){
-//     ODMatrixCar9am.get(i).pauseEdge();
-//  }
-//  rect(0, 0, width, 90);
-//  }
-//}
+
   
 }

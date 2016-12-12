@@ -1,4 +1,4 @@
-RoadNetwork non7, car7, non9, car9, non11, car11, distributedcar, distributednon, non5, car5, non9pm, car9pm, car10, non10, non11pm, car11pm;
+RoadNetwork non7, car7, non9, car9, non11, car11, distributedcar, dynamicthingcar, dynamicthing, distributednon, non5, car5, non9pm, car9pm, car10, non10, non11pm, car11pm;
 
 Places stuff;
 
@@ -8,6 +8,22 @@ ArrayList<Edge> spanish = new ArrayList<Edge>();
 ArrayList<Edge> other = new ArrayList<Edge>();
 
 void generateClosingRoads(){
+  String t = "t" + tint;
+  dynamicthing = new RoadNetwork("dynamic", 500, false, false);
+  dynamicthingcar = new RoadNetwork("dynamiccar", 501, false, true);
+  
+    for(int i = 0; i<closing.getRowCount(); i++){
+    int startid = closing.getInt(i, "Start");
+    int endid = closing.getInt(i, "End");
+    PVector start = new PVector(nodes.getFloat(startid - 1,"lat"), nodes.getFloat(startid - 1,"lon"));
+    PVector end = new PVector(nodes.getFloat(endid - 1,"lat"), nodes.getFloat(endid - 1,"lon"));
+    
+     Road dynamic = new Road(start, end, i, closing2.getFloat(i, t), opening.getInt(i, "capacity"), opening.getInt(i, "speed (meter/s)"));
+     Road dynamiccar = new Road(start, end, i, closing.getFloat(i, t)/2, opening.getInt(i, "capacity"), opening.getInt(i, "speed (meter/s)"));
+     dynamicthing.Roads.add(dynamic);
+     dynamicthingcar.Roads.add(dynamiccar);
+     
+    }
   
 }
 
@@ -85,7 +101,6 @@ void generateOpeningRoads(){
      Road road11pm = new Road(start, end, i, closing.getFloat(i, "t7001")/2, opening.getInt(i, "capacity"), opening.getInt(i, "speed (meter/s)"));
      non11pm.Roads.add(road11pmnon);
      car11pm.Roads.add(road11pm);
-    
   
   }
   

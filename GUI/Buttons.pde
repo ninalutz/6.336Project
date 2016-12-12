@@ -4,8 +4,8 @@ import controlP5.*;
 int offset = 80;
 int offset1 = 100;
 ControlP5 cp5;
-SimpleButton AM, PM, CarButton, CarPoolButton, Distributed, AutoPlay, Congestion, ODButton, Carpool;
-boolean am, pm, income1, income2, distribute, autoplay, congestion, steadystate, carpool;
+SimpleButton AM, PM, CarButton, CarPoolButton, Distributed, AutoPlay, Congestion, ODButton, Dynamic, Carpool;
+boolean am, pm, income1, income2, distribute, autoplay, congestion, steadystate, carpool, dynamic;
 
 void initButtons(){
 
@@ -14,7 +14,8 @@ void initButtons(){
     PM = new SimpleButton(350 + offset1, 47, 35, 25, "PM", pm);
     CarButton = new SimpleButton(450 + offset1, 15, 125, 25, "Show Cars", cars);
     CarPoolButton = new SimpleButton(590 + offset1, 15, 125, 25, "Carpool", carpool);
-    Distributed = new SimpleButton(730 + offset1, 15, 125, 25, "Analysis", distribute);
+    Distributed = new SimpleButton(730 + offset1, 15, 125, 25, "Distribute", distribute);
+    Dynamic = new SimpleButton(870 + offset1, 31, 125, 25, "Dynamic", dynamic);
     Congestion = new SimpleButton(590 + offset1, 47, 125, 25, "Congestion", congestion);
     ODButton = new SimpleButton(730 + offset1, 47, 125, 25, "Show OD", steadystate);
     AutoPlay = new SimpleButton(450 + offset1, 47, 125, 25, "Play/Pause", autoplay);
@@ -23,7 +24,6 @@ void initButtons(){
 
 void initSliders(){
   textSize(20);
-    
     if(AM.on == true){
     cp5.addSlider("t")
      .setPosition(30 + offset,50)
@@ -60,9 +60,9 @@ void initSliders(){
      ;
     }
    
-     
+    
  cp5.getController("t").getValueLabel().align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE).setPaddingX(0);
- 
+     
 }
 
 
