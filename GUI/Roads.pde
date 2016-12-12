@@ -1,9 +1,9 @@
 
-       float xPos=0;  
-        float xDir=.5;
+ float xPos=0;  
+ float xDir=.5;
         
-        StopWatchTimer sw = new StopWatchTimer();
-                StopWatchTimer sw2 = new StopWatchTimer();
+ StopWatchTimer sw = new StopWatchTimer();
+ StopWatchTimer sw2 = new StopWatchTimer();
 
 public class Road{
   public String name; 
@@ -53,10 +53,16 @@ public class RoadNetwork{
   }
 
   public void drawRoads(PGraphics p){
+    
    p.beginDraw();
+//   
+//     for(int i =0; i <nodes.getRowCount(); i++){
+//    PVector loc = mercatorMap.getScreenLocation(new PVector(nodes.getFloat(i, "lat"), nodes.getFloat(i, "lon")));
+//    p.text(nodes.getInt(i, "id"), loc.x + 5, loc.y);
+//   }
 
 
-  if(am){
+  //if(am){
     for(int i = 0; i<Roads.size(); i++){
           //println(Flows.max());
           PVector startViz = mercatorMap.getScreenLocation(Roads.get(i).start);
@@ -69,34 +75,28 @@ public class RoadNetwork{
           
           p.line(startViz.x, startViz.y, endViz.x, endViz.y);
 
- 
     }
-  }   
+  //}   
+
   
-//  for(int i =0; i <nodes.getRowCount(); i++){
-//    PVector loc = mercatorMap.getScreenLocation(new PVector(nodes.getFloat(i, "lat"), nodes.getFloat(i, "lon")));
-//    p.text(nodes.getInt(i, "id"), loc.x + 5, loc.y);
+//  if(pm){
+//    for(int i = 0; i<Roads.size(); i++){
+//          //println(Flows.max());
+//          PVector startViz = mercatorMap.getScreenLocation(Roads.get(i).start);
+//          PVector endViz = mercatorMap.getScreenLocation(Roads.get(i).end);
+//   
+//          color inter = lerpColor(none, full, abs(Roads.get(i).flow)/Roads.get(i).capacity);
+//          p.strokeWeight(7);
+//          p.stroke(inter);
+//          p.line(startViz.x, startViz.y, endViz.x, endViz.y);
+// 
+//    }
 //  }
-  
-  
-  if(pm){
-    for(int i = 0; i<Roads.size(); i++){
-          //println(Flows.max());
-          PVector startViz = mercatorMap.getScreenLocation(Roads.get(i).start);
-          PVector endViz = mercatorMap.getScreenLocation(Roads.get(i).end);
-   
-          color inter = lerpColor(none, full, abs(Roads.get(i).flow)/Roads.get(i).capacity);
-          p.strokeWeight(7);
-          p.stroke(inter);
-          p.line(startViz.x, startViz.y, endViz.x, endViz.y);
- 
-    }
-  }
     
-             p.endDraw();
-             p.clear();
+       p.endDraw();
+       p.clear();
   }
-  public void drawAMCars(PGraphics p){
+  public void drawCars(PGraphics p){
       println("Drawing cars");
         p.beginDraw();
         
@@ -116,7 +116,7 @@ public class RoadNetwork{
         
                     PVector intermed2 = mercatorMap.getScreenLocation(intermed);
                     PVector thing2 = mercatorMap.getScreenLocation(thing);
-   println(sw.getElapsedTime());
+                 println(sw.getElapsedTime());
                  if(sw.getElapsedTime() > 900){
                    xPos = 0;
                    sw.start();
@@ -137,12 +137,6 @@ public class RoadNetwork{
                     PVector intermed2 = mercatorMap.getScreenLocation(intermed);
                     PVector thing2 = mercatorMap.getScreenLocation(thing);
                     
-//                    PVector v3 = PVector.sub(mercatorMap.getScreenLocation(Roads.get(i).end), thing2);
-//
-////                    
-//                   if(millis() % 1000 == 0){
-//                       xPos = 0;
-//                     }
 
                  if(sw.getElapsedTime() > 900){
                    xPos = 0;
@@ -162,9 +156,9 @@ public class RoadNetwork{
   p.clear();
   }
   
-  public void drawPMCars(){
-      Table PM = loadTable("Closing.csv", "header");
-  
+  public void drawDynamicCars(){
+    
+      
   }
 
 }

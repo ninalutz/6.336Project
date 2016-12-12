@@ -1,10 +1,16 @@
 PGraphics Test, Cars, PLACES;
-Table opening, nodes, POIs, closing;
+Table opening, nodes, POIs, closing, closing2,am9carpool ;
 boolean thing, otherthing, needLoop;
 int time;
 boolean cars;
 
+int hour;
+
+String tablename;
+
+
 MercatorMap mercatorMap;
+
 
 void setup(){
   size(1450, 950, P3D);
@@ -12,6 +18,8 @@ void setup(){
   initButtons();
   initSliders();
   opening = loadTable("data/Opening.csv", "header");
+  closing = loadTable("data/Closing.csv", "header");
+  closing2 = loadTable("data/Closing2.csv", "header");
   nodes = loadTable("data/Simnodes_working_final.csv", "header");
   POIs = loadTable("data/POIs.csv", "header");
 
@@ -34,7 +42,41 @@ void setup(){
   
   generateOpeningRoads();
   generatePOIs();
-  generateODs();
+  
+  //void generateODs(Table OD, int hour, boolean carpooling, boolean am){
+    
+  am9carpool = loadTable("data/O9carpool.csv","header");
+  Table am9non = loadTable("data/O9noncarpool.csv","header");
+  Table am7carpool = loadTable("data/O7carpool.csv","header");
+  Table am7non = loadTable("data/O7noncarpool.csv","header");
+  Table am11carpool = loadTable("data/O11carpool.csv","header");
+  Table am11non = loadTable("data/O11noncarpool.csv","header");
+  
+  Table pm5carpool = loadTable("data/C5carpool.csv","header");
+  Table pm5non = loadTable("data/C5noncarpool.csv","header");
+  Table pm9carpool = loadTable("data/C9carpool.csv","header");
+  Table pm9non = loadTable("data/C9noncarpool.csv","header");
+  Table pm11carpool = loadTable("data/C11carpool.csv","header");
+  Table pm11non = loadTable("data/C11noncarpool.csv","header");
+  Table pm10carpool = loadTable("data/C10carpool.csv","header");
+  Table pm10non = loadTable("data/C10noncarpool.csv","header");
+  
+  generateODs(am9carpool, 9, true, true);
+  generateODs(am7carpool, 7, true, true);
+  generateODs(am11carpool, 11, true, true);
+  generateODs(pm5carpool, 5, true, false);
+  generateODs(pm9carpool, 9, true, false);
+  generateODs(pm10carpool, 10, true, false);
+  generateODs(pm11carpool, 11, true, false);
+  
+  generateODs(am9non, 9, false, true);
+  generateODs(am7non, 7, false, true);
+  generateODs(am11non, 11, false, true);
+  generateODs(pm5non, 5, false, false);
+  generateODs(pm9non, 9, false, false);
+  generateODs(pm10non, 10, false, false);
+  generateODs(pm11non, 11, false, false);
+  
  initialTime = millis();
   
 
@@ -42,6 +84,12 @@ void setup(){
 
 
 void draw(){
+  
+  hour = int(cp5.getController("t").getValue());
+  
+
+  
+  //println(hour, AM.on);
   
   am = AM.on;
   pm = PM.on;
@@ -58,10 +106,9 @@ background(background);
 
 map.draw();
 
+
     stuff.drawNodes(PLACES);
 image(PLACES, 0, 0);
-
-
 
 
   //resets initial time apporpriately after one iteration and delay
@@ -79,30 +126,399 @@ if(AM.on == true){
 
 
 if(Congestion.on){ 
-  //car9.drawRoads(Test);
-  non9.drawRoads(Test);
+            if(AM.on){
+              if(hour == 9){
+                  if(CarPoolButton.on){
+                      Test.clear();
+                      car9.drawRoads(Test);
+                  }
+                  else{
+                      Test.clear();
+                      non9.drawRoads(Test);
+                  }
+                  Test.clear();
+              }
+              
+              if(hour == 7){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car7.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non7.drawRoads(Test);
+                  }
+                  Test.clear();
+              }
+              
+            if(hour == 11){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car11.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non11.drawRoads(Test);
+                  }
+                  Test.clear();
+              }  
+            if(Distributed.on){
+                 if(CarPoolButton.on){
+                   Test.clear();
+                      distributedcar.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      distributednon.drawRoads(Test);
+                  }
+                  Test.clear();
+            }
+            }
+        if(PM.on){
+              if(hour == 9){
+                  if(CarPoolButton.on){
+                      Test.clear();
+                      car9pm.drawRoads(Test);
+                  }
+                  else{
+                      Test.clear();
+                      non9pm.drawRoads(Test);
+                  }
+                  Test.clear();
+              }
+              
+              if(hour == 5){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car5.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non5.drawRoads(Test);
+                  }
+                  Test.clear();
+              }
+              
+            if(hour == 11){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car11pm.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non11pm.drawRoads(Test);
+                  }
+                  Test.clear();
+              }  
+            if(hour == 10){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car10.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non10.drawRoads(Test);
+                  }
+                  Test.clear();
+              }  
+            } 
+  
   image(Test, 0, 0);
 }
 
 if(ODButton.on){
   if(AutoPlay.on == false){
-  for(int i = 0; i<ODMatrix.size(); i++){
-     ODMatrix.get(i).drawEdge();
-  }
-  rect(0, 0, width, 90);
+     if(AM.on){
+         if(hour == 7){
+             if(carpool){
+                for(int i = 0; i<ODMatrixCar7am.size(); i++){
+                   ODMatrixCar7am.get(i).drawEdge();
+                  }
+             }
+             else{
+                 for(int i = 0; i<ODMatrixCar7am.size(); i++){
+                   ODMatrixCar7am.get(i).drawEdge();
+                  }
+             }
+         }
+         if(hour == 9){
+             if(carpool){
+               for(int i = 0; i<ODMatrixCar9am.size(); i++){
+                   ODMatrixCar9am.get(i).drawEdge();
+                  }
+             }
+             else{
+               for(int i = 0; i<ODMatrixNon9am.size(); i++){
+                   ODMatrixNon9am.get(i).drawEdge();
+                  }
+             }
+         }
+         if(hour == 11){
+             if(carpool){
+                for(int i = 0; i<ODMatrixCar11am.size(); i++){
+                   ODMatrixCar11am.get(i).drawEdge();
+                  }
+             }
+             else{
+                for(int i = 0; i<ODMatrixNon11am.size(); i++){
+                   ODMatrixNon11am.get(i).drawEdge();
+                  }
+             }
+         }
+     }
+   
+     else{
+         if(hour == 5){
+             if(carpool){
+              for(int i = 0; i<ODMatrixNon5pm.size(); i++){
+                   ODMatrixNon5pm.get(i).drawEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon5pm.size(); i++){
+                   ODMatrixNon5pm.get(i).drawEdge();
+                  } 
+             }
+         }
+         if(hour == 9){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar9pm.size(); i++){
+                   ODMatrixCar9pm.get(i).drawEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon9pm.size(); i++){
+                   ODMatrixNon9pm.get(i).drawEdge();
+                  }
+             }
+         }
+         if(hour == 10){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar10pm.size(); i++){
+                   ODMatrixCar10pm.get(i).drawEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon10pm.size(); i++){
+                   ODMatrixNon10pm.get(i).drawEdge();
+                  }
+             }
+         }
+         if(hour == 11){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar11pm.size(); i++){
+                   ODMatrixCar11pm.get(i).drawEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon11pm.size(); i++){
+                   ODMatrixNon11pm.get(i).drawEdge();
+                  }
+             }
+         }
+     }  
+
+          rect(0, 0, width, 90);
   }
   
   if(AutoPlay.on == true){
-  for(int i = 0; i<ODMatrix.size(); i++){
-     ODMatrix.get(i).pauseEdge();
-  }
+         if(AM.on){
+         if(hour == 7){
+             if(carpool){
+                for(int i = 0; i<ODMatrixCar7am.size(); i++){
+                   ODMatrixCar7am.get(i).pauseEdge();
+                  }
+             }
+             else{
+                 for(int i = 0; i<ODMatrixCar7am.size(); i++){
+                   ODMatrixCar7am.get(i).pauseEdge();
+                  }
+             }
+         }
+         if(hour == 9){
+             if(carpool){
+               for(int i = 0; i<ODMatrixCar9am.size(); i++){
+                   ODMatrixCar9am.get(i).pauseEdge();
+                  }
+             }
+             else{
+               for(int i = 0; i<ODMatrixNon9am.size(); i++){
+                   ODMatrixNon9am.get(i).pauseEdge();
+                  }
+             }
+         }
+         if(hour == 11){
+             if(carpool){
+                for(int i = 0; i<ODMatrixCar11am.size(); i++){
+                   ODMatrixCar11am.get(i).pauseEdge();
+                  }
+             }
+             else{
+                for(int i = 0; i<ODMatrixNon11am.size(); i++){
+                   ODMatrixNon11am.get(i).pauseEdge();
+                  }
+             }
+         }
+     }
+   
+     else{
+         if(hour == 5){
+             if(carpool){
+              for(int i = 0; i<ODMatrixNon5pm.size(); i++){
+                   ODMatrixNon5pm.get(i).pauseEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon5pm.size(); i++){
+                   ODMatrixNon5pm.get(i).pauseEdge();
+                  } 
+             }
+         }
+         if(hour == 9){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar9pm.size(); i++){
+                   ODMatrixCar9pm.get(i).pauseEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon9pm.size(); i++){
+                   ODMatrixNon9pm.get(i).pauseEdge();
+                  }
+             }
+         }
+         if(hour == 10){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar10pm.size(); i++){
+                   ODMatrixCar10pm.get(i).pauseEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon10pm.size(); i++){
+                   ODMatrixNon10pm.get(i).pauseEdge();
+                  }
+             }
+         }
+         if(hour == 11){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar11pm.size(); i++){
+                   ODMatrixCar11pm.get(i).pauseEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon11pm.size(); i++){
+                   ODMatrixNon11pm.get(i).pauseEdge();
+                  }
+             }
+         }
+     }  
   rect(0, 0, width, 90);
   }
 }
 
 
-if(CarButton.on){
-  non9.drawAMCars(Cars);
+//if(CarButton.on){
+//  non9.drawCars(Cars);
+//  image(Cars, 0, 0);
+//}
+
+if(CarButton.on){ 
+            if(AM.on){
+              if(hour == 9){
+                  if(CarPoolButton.on){
+                      Cars.clear();
+                      car9.drawCars(Cars);
+                  }
+                  else{
+                      Cars.clear();
+                      non9.drawCars(Cars);
+                  }
+                  Cars.clear();
+              }
+              
+              if(hour == 7){
+                  if(CarPoolButton.on){
+                    Cars.clear();
+                      car7.drawCars(Cars);
+                  }
+                  else{
+                    Cars.clear();
+                      non7.drawCars(Cars);
+                  }
+                  Cars.clear();
+              }
+              
+            if(hour == 11){
+                  if(CarPoolButton.on){
+                    Cars.clear();
+                      car11.drawCars(Cars);
+                  }
+                  else{
+                    Cars.clear();
+                      non11.drawCars(Cars);
+                  }
+                  Cars.clear();
+              }  
+            if(Distributed.on){
+                 if(CarPoolButton.on){
+                   Cars.clear();
+                      distributedcar.drawCars(Cars);
+                  }
+                  else{
+                    Cars.clear();
+                      distributednon.drawCars(Cars);
+                  }
+                  Cars.clear();
+            }
+            }
+        if(PM.on){
+              if(hour == 9){
+                  if(CarPoolButton.on){
+                      Cars.clear();
+                      car9pm.drawCars(Cars);
+                  }
+                  else{
+                      Cars.clear();
+                      non9pm.drawCars(Cars);
+                  }
+                  Cars.clear();
+              }
+              
+              if(hour == 5){
+                  if(CarPoolButton.on){
+                    Cars.clear();
+                      car5.drawCars(Cars);
+                  }
+                  else{
+                    Cars.clear();
+                      non5.drawCars(Cars);
+                  }
+                  Cars.clear();
+              }
+              
+            if(hour == 11){
+                  if(CarPoolButton.on){
+                    Cars.clear();
+                      car11pm.drawCars(Cars);
+                  }
+                  else{
+                    Cars.clear();
+                      non11pm.drawCars(Cars);
+                  }
+                  Cars.clear();
+              }  
+            if(hour == 10){
+                  if(CarPoolButton.on){
+                    Cars.clear();
+                      car10.drawCars(Cars);
+                  }
+                  else{
+                    Cars.clear();
+                      non10.drawCars(Cars);
+                  }
+                  Cars.clear();
+              }  
+            } 
+  
   image(Cars, 0, 0);
 }
 
@@ -151,34 +567,316 @@ smooth();
 
 void mouseDragged(){
     PLACES.clear();
+    stuff.drawNodes(PLACES);
     
-  if(Congestion.on){
-  Test.clear();
-  PLACES.clear();
-  non9.drawRoads(Test);
-  stuff.drawNodes(PLACES);
-  }
-  
+    if(Congestion.on){
+            if(AM.on){
+              if(hour == 9){
+                  if(CarPoolButton.on){
+                      Test.clear();
+                      car9.drawRoads(Test);
+                  }
+                  else{
+                      Test.clear();
+                      non9.drawRoads(Test);
+                  }
+                  Test.clear();
+              }
+              
+              if(hour == 7){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car7.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non7.drawRoads(Test);
+                  }
+                  Test.clear();
+              }
+              
+            if(hour == 11){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car11.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non11.drawRoads(Test);
+                  }
+                  Test.clear();
+              }  
+            if(Distributed.on){
+                 if(CarPoolButton.on){
+                   Test.clear();
+                      distributedcar.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      distributednon.drawRoads(Test);
+                  }
+                  Test.clear();
+            }
+            }
+        if(PM.on){
+              if(hour == 9){
+                  if(CarPoolButton.on){
+                      Test.clear();
+                      car9pm.drawRoads(Test);
+                  }
+                  else{
+                      Test.clear();
+                      non9pm.drawRoads(Test);
+                  }
+                  Test.clear();
+              }
+              
+              if(hour == 5){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car5.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non5.drawRoads(Test);
+                  }
+                  Test.clear();
+              }
+              
+            if(hour == 11){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car11pm.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non11pm.drawRoads(Test);
+                  }
+                  Test.clear();
+              }  
+            if(hour == 10){
+                  if(CarPoolButton.on){
+                    Test.clear();
+                      car10.drawRoads(Test);
+                  }
+                  else{
+                    Test.clear();
+                      non10.drawRoads(Test);
+                  }
+                  Test.clear();
+              }  
+            }    
+         
+    }
   
   if(CarButton.on == true){
       Cars.clear();
-      non9.drawAMCars(Cars);
+      non9.drawCars(Cars);
   }
   
-  if(edges){
+  if(ODButton.on){
   if(AutoPlay.on == false){
-  for(int i = 0; i<ODMatrix.size(); i++){
-     ODMatrix.get(i).drawEdge();
-  }
-  rect(0, 0, width, 90);
+     if(AM.on){
+         if(hour == 7){
+             if(carpool){
+                for(int i = 0; i<ODMatrixCar7am.size(); i++){
+                   ODMatrixCar7am.get(i).drawEdge();
+                  }
+             }
+             else{
+                 for(int i = 0; i<ODMatrixCar7am.size(); i++){
+                   ODMatrixCar7am.get(i).drawEdge();
+                  }
+             }
+         }
+         if(hour == 9){
+             if(carpool){
+               for(int i = 0; i<ODMatrixCar9am.size(); i++){
+                   ODMatrixCar9am.get(i).drawEdge();
+                  }
+             }
+             else{
+               for(int i = 0; i<ODMatrixNon9am.size(); i++){
+                   ODMatrixNon9am.get(i).drawEdge();
+                  }
+             }
+         }
+         if(hour == 11){
+             if(carpool){
+                for(int i = 0; i<ODMatrixCar11am.size(); i++){
+                   ODMatrixCar11am.get(i).drawEdge();
+                  }
+             }
+             else{
+                for(int i = 0; i<ODMatrixNon11am.size(); i++){
+                   ODMatrixNon11am.get(i).drawEdge();
+                  }
+             }
+         }
+     }
+   
+     else{
+         if(hour == 5){
+             if(carpool){
+              for(int i = 0; i<ODMatrixNon5pm.size(); i++){
+                   ODMatrixNon5pm.get(i).drawEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon5pm.size(); i++){
+                   ODMatrixNon5pm.get(i).drawEdge();
+                  } 
+             }
+         }
+         if(hour == 9){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar9pm.size(); i++){
+                   ODMatrixCar9pm.get(i).drawEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon9pm.size(); i++){
+                   ODMatrixNon9pm.get(i).drawEdge();
+                  }
+             }
+         }
+         if(hour == 10){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar10pm.size(); i++){
+                   ODMatrixCar10pm.get(i).drawEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon10pm.size(); i++){
+                   ODMatrixNon10pm.get(i).drawEdge();
+                  }
+             }
+         }
+         if(hour == 11){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar11pm.size(); i++){
+                   ODMatrixCar11pm.get(i).drawEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon11pm.size(); i++){
+                   ODMatrixNon11pm.get(i).drawEdge();
+                  }
+             }
+         }
+     }  
+
+          rect(0, 0, width, 90);
   }
   
   if(AutoPlay.on == true){
-  for(int i = 0; i<ODMatrix.size(); i++){
-     ODMatrix.get(i).pauseEdge();
-  }
+         if(AM.on){
+         if(hour == 7){
+             if(carpool){
+                for(int i = 0; i<ODMatrixCar7am.size(); i++){
+                   ODMatrixCar7am.get(i).pauseEdge();
+                  }
+             }
+             else{
+                 for(int i = 0; i<ODMatrixCar7am.size(); i++){
+                   ODMatrixCar7am.get(i).pauseEdge();
+                  }
+             }
+         }
+         if(hour == 9){
+             if(carpool){
+               for(int i = 0; i<ODMatrixCar9am.size(); i++){
+                   ODMatrixCar9am.get(i).pauseEdge();
+                  }
+             }
+             else{
+               for(int i = 0; i<ODMatrixNon9am.size(); i++){
+                   ODMatrixNon9am.get(i).pauseEdge();
+                  }
+             }
+         }
+         if(hour == 11){
+             if(carpool){
+                for(int i = 0; i<ODMatrixCar11am.size(); i++){
+                   ODMatrixCar11am.get(i).pauseEdge();
+                  }
+             }
+             else{
+                for(int i = 0; i<ODMatrixNon11am.size(); i++){
+                   ODMatrixNon11am.get(i).pauseEdge();
+                  }
+             }
+         }
+     }
+   
+     else{
+         if(hour == 5){
+             if(carpool){
+              for(int i = 0; i<ODMatrixNon5pm.size(); i++){
+                   ODMatrixNon5pm.get(i).pauseEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon5pm.size(); i++){
+                   ODMatrixNon5pm.get(i).pauseEdge();
+                  } 
+             }
+         }
+         if(hour == 9){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar9pm.size(); i++){
+                   ODMatrixCar9pm.get(i).pauseEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon9pm.size(); i++){
+                   ODMatrixNon9pm.get(i).pauseEdge();
+                  }
+             }
+         }
+         if(hour == 10){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar10pm.size(); i++){
+                   ODMatrixCar10pm.get(i).pauseEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon10pm.size(); i++){
+                   ODMatrixNon10pm.get(i).pauseEdge();
+                  }
+             }
+         }
+         if(hour == 11){
+             if(carpool){
+              for(int i = 0; i<ODMatrixCar11pm.size(); i++){
+                   ODMatrixCar11pm.get(i).pauseEdge();
+                  }
+             }
+             else{
+              for(int i = 0; i<ODMatrixNon11pm.size(); i++){
+                   ODMatrixNon11pm.get(i).pauseEdge();
+                  }
+             }
+         }
+     }  
   rect(0, 0, width, 90);
   }
 }
+  
+//  if(edges){
+//  if(AutoPlay.on == false){
+//  for(int i = 0; i<ODMatrixCar9am.size(); i++){
+//     ODMatrixCar9am.get(i).drawEdge();
+//  }
+//  rect(0, 0, width, 90);
+//  }
+//  
+//  if(AutoPlay.on == true){
+//  for(int i = 0; i<ODMatrixCar9am.size(); i++){
+//     ODMatrixCar9am.get(i).pauseEdge();
+//  }
+//  rect(0, 0, width, 90);
+//  }
+//}
   
 }
