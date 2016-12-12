@@ -1,4 +1,7 @@
-         float xPos=0;  
+     
+     
+     
+       float xPos=0;  
         float xDir=.5;
         
         StopWatchTimer sw = new StopWatchTimer();
@@ -54,6 +57,7 @@ public class RoadNetwork{
   public void drawRoads(PGraphics p){
    p.beginDraw();
 
+
   if(am){
     for(int i = 0; i<Roads.size(); i++){
           //println(Flows.max());
@@ -63,10 +67,14 @@ public class RoadNetwork{
           color inter = lerpColor(none, full, abs(Roads.get(i).flow)/Roads.get(i).capacity);
           p.strokeWeight(7);
           p.stroke(inter);
+          p.fill(#0000ff);
+          
           p.line(startViz.x, startViz.y, endViz.x, endViz.y);
+
  
     }
-  }
+  }   
+  
   
   if(pm){
     for(int i = 0; i<Roads.size(); i++){

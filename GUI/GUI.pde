@@ -39,7 +39,7 @@ void setup(){
   generateOpeningRoads();
   generatePOIs();
   generateODs();
-   initialTime = millis();
+ initialTime = millis();
   
 
 }
@@ -81,20 +81,28 @@ if(AM.on == true){
   timing = "AM";
 }
 if(edges){
+  if(AutoPlay.on == false){
   for(int i = 0; i<ODMatrix.size(); i++){
      ODMatrix.get(i).drawEdge();
   }
   rect(0, 0, width, 90);
-
+  }
+  
+  if(AutoPlay.on == true){
+  for(int i = 0; i<ODMatrix.size(); i++){
+     ODMatrix.get(i).pauseEdge();
+  }
+  rect(0, 0, width, 90);
+  }
 }
 
 if(cars){
-  non9.drawAMCars(Cars);
+  car9.drawAMCars(Cars);
   image(Cars, 0, 0);
 }
 
 if(lines){
-  non9.drawRoads(Test);
+  car9.drawRoads(Test);
 }
 
 if(showFrameRate){
@@ -107,20 +115,28 @@ stroke(background);
 //rect(0, 0, 100, height);
 rect(0, 0, width, 90);
 
-fill(medblue);
-text("Income 1", offset+50, 30);
+
+fill(income1color);
+text("Income 1", offset + 65, 30);
+fill(income2color);
+text("Income 2", offset + 180-25, 30);
+fill(income3color);
+text("Income 3", offset + 265-20, 30);
 
 fill(accentwhite);
 text("t = " + int(cp5.getController("t").getValue()), 260 + offset, 67);
 
-if(AutoPlay.on){
-textSize(40);
-text(int(cp5.getController("t").getValue()) + ":" + minute() + ":" + second() + timing, 1200, 60);
-}
 
-if(AutoPlay.on == false){
 textSize(40);
 text(int(cp5.getController("t").getValue()) + timing, 1200, 60);
+
+
+if(AutoPlay.on == false){
+  xDir = 0.5;
+}
+
+if(AutoPlay.on == true){
+  xDir = 0;
 }
 
 time = int(cp5.getController("t").getValue());
@@ -134,15 +150,30 @@ void mouseDragged(){
   if(lines){
   Test.clear();
   PLACES.clear();
-  non9.drawRoads(Test);
+  car9.drawRoads(Test);
   stuff.drawNodes(PLACES);
   edges = false;
   }
   
   if(cars){
       Cars.clear();
-      non9.drawAMCars(Cars);
-      
+      car9.drawAMCars(Cars);
   }
+  
+  if(edges){
+  if(AutoPlay.on == false){
+  for(int i = 0; i<ODMatrix.size(); i++){
+     ODMatrix.get(i).drawEdge();
+  }
+  rect(0, 0, width, 90);
+  }
+  
+  if(AutoPlay.on == true){
+  for(int i = 0; i<ODMatrix.size(); i++){
+     ODMatrix.get(i).pauseEdge();
+  }
+  rect(0, 0, width, 90);
+  }
+}
   
 }

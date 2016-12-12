@@ -36,7 +36,7 @@ public class Edge {
       PVector origin = mercatorMap.getScreenLocation(orig);
       PVector destination = mercatorMap.getScreenLocation(dest);
       //println(origin, destination);
-      fill(incomecolor);
+      fill(incomecolor, 150);
       PVector hold = new PVector(destination.x, destination.y);
       PVector B = new PVector(hold.x-origin.x, hold.y-origin.y);
       hold = new PVector(destination.x, destination.y);

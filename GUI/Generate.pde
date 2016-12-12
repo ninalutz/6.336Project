@@ -68,7 +68,7 @@ void generatePOIs(){
 }
 
 void generateODs(){
-  Table OD = loadTable("data/O9noncarpool.csv", "header");
+  Table OD = loadTable("data/O9carpool.csv", "header");
   for(int i = 0; i<OD.getRowCount(); i++){
     POI poi = new POI(new PVector(OD.getFloat(i, "lat"), OD.getFloat(i, "lon")), OD.getInt(i, "id"), OD.getInt(i, "income"), OD.getInt(i, "amount"), OD.getInt(i, "open"), OD.getInt(i, "close"));
     ODPOIs.add(poi); 
