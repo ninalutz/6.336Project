@@ -54,6 +54,7 @@ public class RoadNetwork{
   public void drawRoads(PGraphics p){
    p.beginDraw();
 
+
   if(am){
     for(int i = 0; i<Roads.size(); i++){
           //println(Flows.max());
@@ -66,12 +67,11 @@ public class RoadNetwork{
           p.fill(#0000ff);
           
           p.line(startViz.x, startViz.y, endViz.x, endViz.y);
-          
 
-          p.text(Roads.get(i).id, startViz.x, startViz.y + 5);
  
     }
-  }
+  }   
+  
   
   if(pm){
     for(int i = 0; i<Roads.size(); i++){

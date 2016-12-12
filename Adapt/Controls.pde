@@ -14,7 +14,7 @@ void keyPressed(){
 //       map.zoomOut();
 //       break; 
   case ' ':
-      Table Simnodes = loadTable("Simnodes.csv", "header");
+      Table Simnodes = loadTable("Simnodes_working_final.csv", "header");
       PVector Thing = mercatorMap.getGeo(new PVector(mouseX, mouseY));
       TableRow newRow = Simnodes.addRow();
       newRow.setFloat("lat", Thing.x);
