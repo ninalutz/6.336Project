@@ -1,7 +1,3 @@
-int hr = 11;
-int min = 15;
-int sec = 56;
-
 PGraphics Test, Cars, PLACES;
 Table opening, nodes, POIs, closing;
 boolean thing, otherthing, needLoop;
@@ -11,7 +7,7 @@ boolean cars;
 MercatorMap mercatorMap;
 
 void setup(){
-  size(1450, 850, P3D);
+  size(1450, 950, P3D);
   cp5 = new ControlP5(this);
   initButtons();
   initSliders();
@@ -83,7 +79,8 @@ if(AM.on == true){
 
 
 if(Congestion.on){ 
-  car9.drawRoads(Test);
+  //car9.drawRoads(Test);
+  non9.drawRoads(Test);
   image(Test, 0, 0);
 }
 
@@ -105,7 +102,7 @@ if(ODButton.on){
 
 
 if(CarButton.on){
-  car9.drawAMCars(Cars);
+  non9.drawAMCars(Cars);
   image(Cars, 0, 0);
 }
 
@@ -158,14 +155,14 @@ void mouseDragged(){
   if(Congestion.on){
   Test.clear();
   PLACES.clear();
-  car9.drawRoads(Test);
+  non9.drawRoads(Test);
   stuff.drawNodes(PLACES);
   }
   
   
   if(CarButton.on == true){
       Cars.clear();
-      car9.drawAMCars(Cars);
+      non9.drawAMCars(Cars);
   }
   
   if(edges){

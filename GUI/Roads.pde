@@ -73,6 +73,11 @@ public class RoadNetwork{
     }
   }   
   
+//  for(int i =0; i <nodes.getRowCount(); i++){
+//    PVector loc = mercatorMap.getScreenLocation(new PVector(nodes.getFloat(i, "lat"), nodes.getFloat(i, "lon")));
+//    p.text(nodes.getInt(i, "id"), loc.x + 5, loc.y);
+//  }
+  
   
   if(pm){
     for(int i = 0; i<Roads.size(); i++){
