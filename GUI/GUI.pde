@@ -24,9 +24,9 @@ void setup(){
  //map = new UnfoldingMap(this, new StamenMapProvider.WaterColor());
   //map = new UnfoldingMap(this, new Microsoft.RoadProvider());
 // map = new UnfoldingMap(this, new Microsoft.HybridProvider());
-    Location Boston = new Location(42.359676, -71.060636);
+    Location Boston = new Location(42.365986,-71.07584);
 
-  map.zoomAndPanTo(Boston, 17);
+  map.zoomAndPanTo(Boston, 16);
   
   Test = createGraphics(width, height);
 
@@ -62,7 +62,7 @@ background(background);
 
 map.draw();
 
-image(Test, 0, 0);
+    stuff.drawNodes(PLACES);
 image(PLACES, 0, 0);
 
 
@@ -80,7 +80,14 @@ String timing = "PM";
 if(AM.on == true){
   timing = "AM";
 }
-if(edges){
+
+
+if(Congestion.on){ 
+  car9.drawRoads(Test);
+  image(Test, 0, 0);
+}
+
+if(ODButton.on){
   if(AutoPlay.on == false){
   for(int i = 0; i<ODMatrix.size(); i++){
      ODMatrix.get(i).drawEdge();
@@ -96,14 +103,12 @@ if(edges){
   }
 }
 
-if(cars){
+
+if(CarButton.on){
   car9.drawAMCars(Cars);
   image(Cars, 0, 0);
 }
 
-if(lines){
-  car9.drawRoads(Test);
-}
 
 if(showFrameRate){
   println(frameRate);
@@ -142,20 +147,23 @@ if(AutoPlay.on == true){
 time = int(cp5.getController("t").getValue());
 
 smooth();
+//  println(Congestion.on);
 //println(frameRate);
 
 }
 
 void mouseDragged(){
-  if(lines){
+    PLACES.clear();
+    
+  if(Congestion.on){
   Test.clear();
   PLACES.clear();
   car9.drawRoads(Test);
   stuff.drawNodes(PLACES);
-  edges = false;
   }
   
-  if(cars){
+  
+  if(CarButton.on == true){
       Cars.clear();
       car9.drawAMCars(Cars);
   }

@@ -74,6 +74,7 @@ Places(int _id){
       }
     }
   p.endDraw();  
+  p.clear();
 }
 
 }

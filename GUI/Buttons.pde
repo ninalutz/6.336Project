@@ -4,7 +4,7 @@ import controlP5.*;
 int offset = 80;
 int offset1 = 100;
 ControlP5 cp5;
-SimpleButton AM, PM, Income1, Income2, Income3, AutoPlay, Congestion, SteadyState, Carpool;
+SimpleButton AM, PM, CarButton, CarpoolButton, Distributed, AutoPlay, Congestion, ODButton, Carpool;
 boolean am, pm, income1, income2, income3, autoplay, congestion, steadystate, carpool;
 
 void initButtons(){
@@ -13,11 +13,11 @@ void initButtons(){
      
       AM = new SimpleButton(300 + offset1, 47, 35, 25, "AM", am);
   PM = new SimpleButton(350 + offset1, 47, 35, 25, "PM", pm);
-  Income1 = new SimpleButton(450 + offset1, 15, 125, 25, "Show Cars", cars);
-  Income2 = new SimpleButton(590 + offset1, 15, 125, 25, "Carpool", carpool);
-  Income3 = new SimpleButton(730 + offset1, 15, 125, 25, "Distributed", income3);
+  CarButton = new SimpleButton(450 + offset1, 15, 125, 25, "Show Cars", cars);
+  CarpoolButton = new SimpleButton(590 + offset1, 15, 125, 25, "Carpool", carpool);
+  Distributed = new SimpleButton(730 + offset1, 15, 125, 25, "Distributed", income3);
   Congestion = new SimpleButton(590 + offset1, 47, 125, 25, "Congestion", congestion);
-  SteadyState = new SimpleButton(730 + offset1, 47, 125, 25, "Show OD", steadystate);
+  ODButton = new SimpleButton(730 + offset1, 47, 125, 25, "Show OD", steadystate);
   AutoPlay = new SimpleButton(450 + offset1, 47, 125, 25, "Play/Pause", autoplay);
      AM.on = true;
 }
@@ -90,6 +90,9 @@ public class SimpleButton
     {
         on = !on;
         initSliders();
+
+        sw.start();
+
         
     }
 

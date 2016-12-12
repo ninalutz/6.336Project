@@ -1,6 +1,4 @@
-     
-     
-     
+
        float xPos=0;  
         float xDir=.5;
         
