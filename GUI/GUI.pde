@@ -81,11 +81,19 @@ if(AM.on == true){
   timing = "AM";
 }
 if(edges){
+  if(AutoPlay.on == false){
   for(int i = 0; i<ODMatrix.size(); i++){
      ODMatrix.get(i).drawEdge();
   }
   rect(0, 0, width, 90);
-
+  }
+  
+  if(AutoPlay.on == true){
+  for(int i = 0; i<ODMatrix.size(); i++){
+     ODMatrix.get(i).pauseEdge();
+  }
+  rect(0, 0, width, 90);
+  }
 }
 
 if(cars){
@@ -150,7 +158,22 @@ void mouseDragged(){
   if(cars){
       Cars.clear();
       car9.drawAMCars(Cars);
-      
   }
+  
+  if(edges){
+  if(AutoPlay.on == false){
+  for(int i = 0; i<ODMatrix.size(); i++){
+     ODMatrix.get(i).drawEdge();
+  }
+  rect(0, 0, width, 90);
+  }
+  
+  if(AutoPlay.on == true){
+  for(int i = 0; i<ODMatrix.size(); i++){
+     ODMatrix.get(i).pauseEdge();
+  }
+  rect(0, 0, width, 90);
+  }
+}
   
 }

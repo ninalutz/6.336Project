@@ -10,16 +10,7 @@ switch(key){
     PLACES.clear();
     car9.drawRoads(Test);
     stuff.drawNodes(PLACES);
-//    
-//    for(int i = 0; i<POINetwork.size(); i++){
-//        POINetwork.get(i).drawNodes(PLACES);
-//    }
-//    
-//    for(int i =0; i<ODPOIs.size(); i++){
-//        ODPOIs.get(i).drawNodes(PLACES);
-//    }
     break;
-    
     
   case 'o':
      edges = !edges;
