@@ -15,7 +15,7 @@ void initButtons(){
   PM = new SimpleButton(350 + offset1, 47, 35, 25, "PM", pm);
   Income1 = new SimpleButton(450 + offset1, 15, 125, 25, "Show Cars", cars);
   Income2 = new SimpleButton(590 + offset1, 15, 125, 25, "Carpool", carpool);
-  Income3 = new SimpleButton(730 + offset1, 15, 125, 25, "Show Graphs", income3);
+  Income3 = new SimpleButton(730 + offset1, 15, 125, 25, "Distributed", income3);
   Congestion = new SimpleButton(590 + offset1, 47, 125, 25, "Congestion", congestion);
   SteadyState = new SimpleButton(730 + offset1, 47, 125, 25, "Show OD", steadystate);
   AutoPlay = new SimpleButton(450 + offset1, 47, 125, 25, "Play/Pause", autoplay);

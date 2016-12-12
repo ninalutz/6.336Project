@@ -63,7 +63,12 @@ public class RoadNetwork{
           color inter = lerpColor(none, full, abs(Roads.get(i).flow)/Roads.get(i).capacity);
           p.strokeWeight(7);
           p.stroke(inter);
+          p.fill(#0000ff);
+          
           p.line(startViz.x, startViz.y, endViz.x, endViz.y);
+          
+
+          p.text(Roads.get(i).id, startViz.x, startViz.y + 5);
  
     }
   }
